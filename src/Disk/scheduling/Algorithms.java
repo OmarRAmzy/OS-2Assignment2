@@ -8,7 +8,7 @@ import java.io.File;
 
 public class Algorithms
 {
-	private int start ;
+	private int start , end=199 ;
 	private  ArrayList<Integer> queue =new ArrayList<Integer>() ;
 	private int arr [];
 	private	Scanner cin = new Scanner(System.in);
@@ -129,9 +129,9 @@ public class Algorithms
 		}
 		
 		
-		totalMovement+=abs(199-s);
+		totalMovement+=abs(end-s);
 		s=arr[FIndex-1];
-		totalMovement+=abs(199-s);
+		totalMovement+=abs(end-s);
 		
 		System.out.print(s+" ");
 		
@@ -185,6 +185,7 @@ public class Algorithms
 	}
 
 	public void Look()
+
 	{
 		int totalMovement=0 , s=start , FIndex=-1 , n=queue.size() ;
 		
@@ -247,12 +248,7 @@ public class Algorithms
 			System.out.print(s+" ");
 			
 		}
-		/*
-		s=arr[FIndex+1];
-		totalMovement+=s;
-		System.out.print(s+" ");
-		*/
-		for(int i = FIndex+1 ; i<n ;i++)
+				for(int i = FIndex+1 ; i<n ;i++)
 		{
 			totalMovement+=abs(s-arr[i]);
 			s=arr[i];
@@ -262,4 +258,96 @@ public class Algorithms
 		System.out.println("\nTotal Number of Movements= "+ totalMovement);
 		
 	}
+
+	public void C_Scan()
+	{
+		int totalMovement=0 , s=start , FIndex=-1 , n=queue.size() ;
+		  
+		int arr[] = new int [n];
+		
+		for(int i=0 ;i<n ;i++)
+			arr[i]=queue.get(i);
+		
+		Arrays.sort(arr);
+		
+		for(int i=0 ;i<n ;i++)
+		{
+			if(arr[i]>=s){
+				FIndex=i;
+				break;
+			}
+		}
+		
+		
+		System.out.println("Sequence of serving from left to right : ");
+		
+		for(int i=FIndex ;i<n ;i++)
+		{
+			totalMovement+=abs(s-arr[i]);
+			s=arr[i];
+			System.out.print(s+" ");
+		}
+		
+		totalMovement+=end-s;
+		totalMovement+=end-0+1; //jump
+		s=0;
+		for(int i=0 ;i<FIndex ;i++ )
+		{
+			totalMovement+=abs(arr[i]-s);
+			s=arr[i];
+			System.out.print(s+" ");
+		}
+		
+		System.out.println("\nTotal Number of Movements= "+totalMovement);
+		
+		
+		
+	}
+
+	public void C_LOOK()
+	{
+		int totalMovement=0 , s=start , FIndex=-1 , n=queue.size() ;
+		  
+		int arr[] = new int [n];
+		
+		for(int i=0 ;i<n ;i++)
+			arr[i]=queue.get(i);
+		
+		Arrays.sort(arr);
+		
+		for(int i=0 ;i<n ;i++)
+		{
+			if(arr[i]>=s){
+				FIndex=i;
+				break;
+			}
+		}
+		
+		
+		System.out.println("Sequence of serving from left to right : ");
+		
+		for(int i=FIndex ;i<n ;i++)
+		{
+			totalMovement+=abs(s-arr[i]);
+			s=arr[i];
+			System.out.print(s+" ");
+		}
+		totalMovement+=abs(s-arr[0]); //jump
+		s=arr[0];
+		System.out.print(s+" ");
+
+		for(int i=1 ;i<FIndex ;i++ )
+		{
+			totalMovement+=abs(arr[i]-s);
+			s=arr[i];
+			System.out.print(s+" ");
+		}
+		
+		System.out.println("\nTotal Number of Movements= "+totalMovement);
+
+		
+		
+	}
+
 }
+

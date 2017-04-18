@@ -19,6 +19,14 @@ public class Main {
 		System.out.println("\n");
 		System.out.println("LOOK");
 		A.Look();
+		System.out.println("\n");
+		System.out.println("C_Scan");
+		A.C_Scan();
+		System.out.println("\n");
+		System.out.println("C_Look");
+		A.C_LOOK();
+
+		
 		
 	}
 
